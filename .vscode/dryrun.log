@@ -1,0 +1,7 @@
+make.exe --dry-run --always-make --keep-going --print-directory
+make: Entering directory 'c:/Users/Valenti/Documents/PlatformIO/Projects/220617-172408-uno'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+
+make: Leaving directory 'c:/Users/Valenti/Documents/PlatformIO/Projects/220617-172408-uno'
+ 

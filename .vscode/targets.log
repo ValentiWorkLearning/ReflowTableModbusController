@@ -1,0 +1,368 @@
+make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+
+# GNU Make 4.3
+# Built for Windows32
+# Copyright (C) 1988-2020 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+
+# Make data base, printed on Mon Jun 20 10:07:26 2022
+
+# Variables
+
+# environment
+SYSTEMDRIVE = C:
+# environment
+LC_ALL = C
+# environment
+VBOX_HWVIRTEX_IGNORE_SVM_IN_USE = 1
+# environment
+CMAKE_PREFIX_PATH = C:\Qt
+# environment
+USERPROFILE = C:\Users\Valenti
+# environment
+VBOX_MSI_INSTALL_PATH = C:\Program Files\Oracle\VirtualBox\
+# environment
+MKL_SERIAL = YES
+# environment
+LOCALAPPDATA = C:\Users\Valenti\AppData\Local
+# environment
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-73574495-8241-4e8e-98e4-e8113f180232-sock
+# environment
+MSMPI_LIB64 = C:\Program Files (x86)\Microsoft SDKs\MPI\Lib\x64\
+# environment
+ALDEC_LICENSE_FILE = D:\1-ActiveHDLcrack\Dat\license.dat
+# environment
+VSCODE_CWD = C:\Windows\system32
+# environment
+CHOCOLATEYINSTALL = C:\ProgramData\chocolatey
+# environment
+SYSTEMROOT = C:\Windows
+# environment
+PROCESSOR_LEVEL = 16
+# environment
+PSMODULEPATH = C:\Program Files\WindowsPowerShell\Modules;C:\Windows\system32\WindowsPowerShell\v1.0\Modules
+# default
+MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
+# environment
+NO_XILINX_DATA_LICENSE = HIDDEN
+# automatic
+@D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
+# environment
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_15384_OWQOXKDDFLZKVABU
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# default
+.VARIABLES := 
+# automatic
+%D = $(patsubst %/,%,$(patsubst %\,%,$(dir $%)))
+# automatic
+^D = $(patsubst %/,%,$(patsubst %\,%,$(dir $^)))
+# environment
+VSCODE_LOG_STACK = false
+# automatic
+%F = $(notdir $%)
+# environment
+VSCODE_CODE_CACHE_PATH = C:\Users\Valenti\AppData\Roaming\Code\CachedData\f80445acd5a3dadef24aa209168452a3d97cc326
+# environment
+LANG = C
+# default
+.LOADED := 
+# environment
+LEDDARTECH_HEADERS = D:\Programs\Lidar\
+# environment
+TMP = C:\Users\Valenti\AppData\Local\Temp
+# environment
+VISUALGDB_DIR = C:\Program Files (x86)\Sysprogs\VisualGDB\
+# default
+.INCLUDE_DIRS = .
+# environment
+PROCESSOR_ARCHITEW6432 = AMD64
+# makefile
+MAKEFLAGS = pqrR
+# environment
+ONEDRIVE = C:\Users\Valenti\OneDrive
+# makefile
+CURDIR := c:/Users/Valenti/Documents/PlatformIO/Projects/220617-172408-uno
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+# automatic
+*D = $(patsubst %/,%,$(patsubst %\,%,$(dir $*)))
+# environment
+EQ_LIBRARY_PATH = C:\Users\Valenti\gcc\x86_64-w64-mingw32\lib
+# environment
+PROGRAMFILES = C:\Program Files (x86)
+# environment
+MFLAGS = -pqrR
+# default
+.SHELLFLAGS := -c
+# environment
+COMMONPROGRAMW6432 = C:\Program Files\Common Files
+# automatic
++D = $(patsubst %/,%,$(patsubst %\,%,$(dir $+)))
+# makefile
+MAKEFILE_LIST := 
+# automatic
+@F = $(notdir $@)
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# environment
+VSCODE_PID = 15384
+# automatic
+?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
+# environment
+__PSLOCKDOWNPOLICY = 0
+# environment
+MSMPI_BIN = C:\Program Files\Microsoft MPI\Bin\
+# environment
+OPENSSL_BIN = C:\Program Files\OpenSSL-Win64\bin
+# environment
+NRFJPROG_PATH = C:/Program Files/Nordic Semiconductor/nrf-command-line-tools/bin/
+# automatic
+*F = $(notdir $*)
+# automatic
+<D = $(patsubst %/,%,$(patsubst %\,%,$(dir $<)))
+# environment
+VSCODE_NLS_CONFIG = {"locale":"ru","availableLanguages":{},"_languagePackSupport":true}
+# environment
+INCLUDE = C:\WATCOM\H;C:\WATCOM\H\NT;C:\WATCOM\H\NT\DIRECTX;C:\WATCOM\H\NT\DDK
+# default
+MAKE_HOST := Windows32
+# environment
+FINCLUDE = C:\WATCOM\SRC\FORTRAN;C:\WATCOM\SRC\FORTRAN\WIN
+# environment
+PROGRAMDATA = C:\ProgramData
+# default
+SHELL := C:/cygwin64/bin/sh.exe
+# environment
+HOMEPATH = \Users\Valenti
+# environment
+PLATFORMIO_CALLER = vscode
+# environment
+LD_LIBRARY_PATH = C:\Program Files (x86)\Kingston SSD Toolbox
+# default
+MAKECMDGOALS := all
+# environment
+COMSPEC = C:\Windows\system32\cmd.exe
+# environment
+WINDIR = C:\Windows
+# environment
+MAKELEVEL := 0
+# default
+MAKE = $(MAKE_COMMAND)
+# environment
+LEDDARTECH_LIBS = D:\Programs\Lidar\
+# environment
+PATH = C:\Users\Valenti\AppData\Local\Programs\Python\Python39\Scripts\;C:\Users\Valenti\AppData\Local\Programs\Python\Python39\;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Kingston SSD Toolbox;C:\Users\Valenti\gcc\bin;C:\WATCOM\BINNT;C:\WATCOM\BINW;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Common Files\Acronis\SnapAPI\;C:\Users\Valenti\.dnx\bin;C:\Program Files\Microsoft DNX\Dnvm\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Intel\Phone Flash Tool Lite;D:\Programs\ActiveHDL\bin;D:\1-ActiveHDLcrack\bin;D:\Programs\Matlab\runtime\win64;D:\Programs\Matlab\bin;C:\Program Files\MATLAB\R2017b\runtime\win64;C:\Program Files\MATLAB\R2017b\bin;D:\Programs\Lidar\;C:\Program Files (x86)\STMicroelectronics\STM32 ST-LINK Utility\ST-LINK Utility;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\NASM;C:\Program Files (x86)\Bochs-2.6.9;C:\Program Files (x86)\Visual Leak Detector\bin\Win32;C:\Meld;C:\Meld\lib;C:\ProgramData\chocolatey\bin;C:\Program Files\Nordic Semiconductor\nrf-command-line-tools\bin\;D:\Programs\Mathlab_dir\runtime\win64;D:\Programs\Mathlab_dir\bin;D:\Programs\Mathlab_dir\polyspace\bin;C:\Program Files\nodejs\;C:\Program Files\dotnet\;C:\Program Files (x86)\Paragon Software\LinuxFS for Windows\;C:\Program Files\Git\cmd;C:\Program Files\CMake\bin;C:\Program Files\Microsoft VS Code\bin;C:\Program Files (x86)\dotnet\;C:\Program Files\PuTTY\;C:\Users\Valenti\AppData\Local\Programs\Python\Python310\Scripts\;C:\Users\Valenti\AppData\Local\Programs\Python\Python310\;C:\Users\Valenti\AppData\Local\Microsoft\WindowsApps;C:\JLink_720;C:\cygwin64\bin;C:\Program Files\Microsoft MPI\Bin;C:\Users\Valenti\AppData\Roaming\npm;C:\Qt\Tools\Preview\Qt Creator 4.15.0-rc1\bin
+# environment
+COMPUTERNAME = DESKTOP-AB9KC95
+# default
+MAKEFILES := 
+# environment
+KMP_DUPLICATE_LIB_OK = TRUE
+# automatic
+^F = $(notdir $^)
+# environment
+PROMPT = $P$G
+# environment
+CHOCOLATEYLASTPATHUPDATE = 132528976623554618
+# environment
+QT_DEVICE_PIXEL_RATIO = auto
+# environment
+LOGONSERVER = \\DESKTOP-AB9KC95
+# environment
+VSCODE_LOG_NATIVE = false
+# environment
+USERNAME = Valenti
+# environment
+OPENSSL_INCLUDE = C:\Program Files\OpenSSL-Win64\include
+# environment
+COMMONPROGRAMFILES = C:\Program Files (x86)\Common Files
+# environment
+ADSK_CLM_WPAD_PROXY_CHECK = FALSE
+# automatic
+?F = $(notdir $?)
+# environment
+PROGRAMW6432 = C:\Program Files
+# environment
+MSMPI_LIB32 = C:\Program Files (x86)\Microsoft SDKs\MPI\Lib\x86\
+# environment
+NO_PROXY = 127.0.0.1
+# environment
+PATHEXT = .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW
+# automatic
++F = $(notdir $+)
+# environment
+WATCOM = C:\WATCOM
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+# environment
+USERDOMAIN = DESKTOP-AB9KC95
+# 'override' directive
+GNUMAKEFLAGS := 
+# environment
+VS140COMNTOOLS = C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools\
+# environment
+OS = Windows_NT
+# environment
+PLATFORMIO_PATH = C:\Users\Valenti\.platformio\python3;C:\Users\Valenti\AppData\Local\Programs\Python\Python39\Scripts\;C:\Users\Valenti\AppData\Local\Programs\Python\Python39\;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Kingston SSD Toolbox;C:\Users\Valenti\gcc\bin;C:\WATCOM\BINNT;C:\WATCOM\BINW;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Common Files\Acronis\SnapAPI\;C:\Users\Valenti\.dnx\bin;C:\Program Files\Microsoft DNX\Dnvm\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Intel\Phone Flash Tool Lite;D:\Programs\ActiveHDL\bin;D:\1-ActiveHDLcrack\bin;D:\Programs\Matlab\runtime\win64;D:\Programs\Matlab\bin;C:\Program Files\MATLAB\R2017b\runtime\win64;C:\Program Files\MATLAB\R2017b\bin;D:\Programs\Lidar\;C:\Program Files (x86)\STMicroelectronics\STM32 ST-LINK Utility\ST-LINK Utility;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\NASM;C:\Program Files (x86)\Bochs-2.6.9;C:\Program Files (x86)\Visual Leak Detector\bin\Win32;C:\Meld;C:\Meld\lib;C:\ProgramData\chocolatey\bin;C:\Program Files\Nordic Semiconductor\nrf-command-line-tools\bin\;D:\Programs\Mathlab_dir\runtime\win64;D:\Programs\Mathlab_dir\bin;D:\Programs\Mathlab_dir\polyspace\bin;C:\Program Files\nodejs\;C:\Program Files\dotnet\;C:\Program Files (x86)\Paragon Software\LinuxFS for Windows\;C:\Program Files\Git\cmd;C:\Program Files\CMake\bin;C:\Program Files\Microsoft VS Code\bin;C:\Program Files (x86)\dotnet\;C:\Program Files\PuTTY\;C:\Users\Valenti\AppData\Local\Programs\Python\Python310\Scripts\;C:\Users\Valenti\AppData\Local\Programs\Python\Python310\;C:\Users\Valenti\AppData\Local\Microsoft\WindowsApps;C:\JLink_720;C:\cygwin64\bin;C:\Program Files\Microsoft MPI\Bin;C:\Users\Valenti\AppData\Roaming\npm;C:\Qt\Tools\Preview\Qt Creator 4.15.0-rc1\bin;C:\Users\Valenti\AppData\Local\Programs\Python\Python39\Scripts\;C:\Users\Valenti\AppData\Local\Programs\Python\Python39\;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Kingston SSD Toolbox;C:\Users\Valenti\gcc\bin;C:\WATCOM\BINNT;C:\WATCOM\BINW;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Common Files\Acronis\SnapAPI\;C:\Users\Valenti\.dnx\bin;C:\Program Files\Microsoft DNX\Dnvm\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Intel\Phone Flash Tool Lite;D:\Programs\ActiveHDL\bin;D:\1-ActiveHDLcrack\bin;D:\Programs\Matlab\runtime\win64;D:\Programs\Matlab\bin;C:\Program Files\MATLAB\R2017b\runtime\win64;C:\Program Files\MATLAB\R2017b\bin;D:\Programs\Lidar\;C:\Program Files (x86)\STMicroelectronics\STM32 ST-LINK Utility\ST-LINK Utility;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\NASM;C:\Program Files (x86)\Bochs-2.6.9;C:\Program Files (x86)\Visual Leak Detector\bin\Win32;C:\Meld;C:\Meld\lib;C:\ProgramData\chocolatey\bin;C:\Program Files\Nordic Semiconductor\nrf-command-line-tools\bin\;D:\Programs\Mathlab_dir\runtime\win64;D:\Programs\Mathlab_dir\bin;D:\Programs\Mathlab_dir\polyspace\bin;C:\Program Files\nodejs\;C:\Program Files\dotnet\;C:\Program Files (x86)\Paragon Software\LinuxFS for Windows\;C:\Program Files\Git\cmd;C:\Program Files\CMake\bin;C:\Program Files\Microsoft VS Code\bin;C:\Program Files (x86)\dotnet\;C:\Program Files\PuTTY\;C:\Users\Valenti\AppData\Local\Programs\Python\Python310\Scripts\;C:\Users\Valenti\AppData\Local\Programs\Python\Python310\;C:\Users\Valenti\AppData\Local\Microsoft\WindowsApps;C:\JLink_720;C:\cygwin64\bin;C:\Program Files\Microsoft MPI\Bin;C:\Users\Valenti\AppData\Roaming\npm;C:\Qt\Tools\Preview\Qt Creator 4.15.0-rc1\bin
+# environment
+MSMPI_BENCHMARKS = C:\Program Files\Microsoft MPI\Benchmarks\
+# environment
+ACTEL_FOR_ALTIUM_OVERRIDE = $(subst ,, )
+# makefile
+.DEFAULT_GOAL := 
+# default
+MAKE_VERSION := 4.3
+# environment
+EDPATH = C:\WATCOM\EDDAT
+# environment
+PROGRAMFILES(X86) = C:\Program Files (x86)
+# environment
+BONJOUR_SDK_HOME = C:\Program Files\Bonjour SDK\
+# environment
+USERDOMAIN_ROAMINGPROFILE = DESKTOP-AB9KC95
+# environment
+NUMBER_OF_PROCESSORS = 4
+# environment
+PUBLIC = C:\Users\Public
+# environment
+APPDATA = C:\Users\Valenti\AppData\Roaming
+# environment
+KICAD_LIBRARIES_ROOT = D:\1-Controllers\1-Diploma\Schematic\KiCadLibrariesRoot
+# environment
+HOMEDRIVE = C:
+# environment
+ZEPHYR_TOOLCHAIN_VARIANT = gnuarmemb
+# environment
+PROCESSOR_ARCHITECTURE = x86
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProcess
+# environment
+PLATFORMIO_IDE = 2.4.3
+# environment
+COMMONPROGRAMFILES(X86) = C:\Program Files (x86)\Common Files
+# environment
+MSMPI_INC = C:\Program Files (x86)\Microsoft SDKs\MPI\Include\
+# environment
+ZEPHYR_BASE = C:\Users\Valenti\zephyrproject\zephyr
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# environment
+TEMP = C:\Users\Valenti\AppData\Local\Temp
+# environment
+VSCODE_IPC_HOOK = \\.\pipe\c6f83a14031dfa92a4aadbcc3899e383-1.64.2-main-sock
+# environment
+WIPFC = C:\WATCOM\WIPFC
+# environment
+NRF5_SDK_PATH_ENV = C:/Nordic_dev
+# environment
+ALTERA_FOR_ALTIUM_OVERRIDE = $(subst ,, )
+# default
+.RECIPEPREFIX := 
+# automatic
+<F = $(notdir $<)
+# default
+SUFFIXES := 
+# environment
+ALLUSERSPROFILE = C:\ProgramData
+# environment
+SESSIONNAME = Console
+# environment
+PT7HOME = C:\Program Files\Cisco Packet Tracer 7.3.1
+# environment
+VSCODE_CLI = 1
+# environment
+ELECTRON_NO_ATTACH_CONSOLE = 1
+# environment
+QTMSBUILD = C:\Users\Valenti\AppData\Local\QtMsBuild
+# default
+.FEATURES := tar 
+get-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync load
+# environment
+PROCESSOR_REVISION = 0403
+# environment
+WHTMLHELP = C:\WATCOM\BINNT\HELP
+# environment
+PROCESSOR_IDENTIFIER = AMD64 Family 16 Model 4 Stepping 3, AuthenticAMD
+# variable set hash-table stats:
+# Load=138/1024=13%, Rehash=0, Collisions=21/161=13%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (key c:/Users/Valenti/Documents/PlatformIO/Projects/220617-172408-uno, mtime 1655475902): 10 files, no impossibilities.
+
+# 10 files, no impossibilities in 1 directories.
+
+# Implicit Rules
+
+# No implicit rules.
+
+# Files
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+all:
+#  Command line target.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has not been updated.
+
+# Not a target:
+makefile:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+
+# Not a target:
+makefile.mak:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+
+# Not a target:
+GNUmakefile:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+
+# files hash-table stats:
+# Load=7/1024=1%, Rehash=0, Collisions=0/16=0%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 17 / storage = 131 B / avg = 7 B
+# current buf: size = 8174 B / used = 131 B / count = 17 / avg = 7 B
+
+# strcache performance: lookups = 20 / hit rate = 15%
+# hash-table stats:
+# Load=17/8192=0%, Rehash=0, Collisions=0/20=0%
+# Finished Make data base on Mon Jun 20 10:07:26 2022
+
+ 
