@@ -7,9 +7,9 @@
 #include <etl/flat_map.h>
 #include <etl/delegate.h>
 
-uint8_t writeDigitalOutCb(uint8_t fc, uint16_t address, uint16_t length, void *callbackContext) noexcept;
-uint8_t readHoldingRegistersCb(uint8_t fc, uint16_t address, uint16_t length, void *callbackContext) noexcept;
-uint8_t writeHoldingRegistersCb(uint8_t fc, uint16_t address, uint16_t length, void *callbackContext) noexcept;
+u8 writeDigitalOutCb(u8 fc, u16 address, u16 length, void *callbackContext) noexcept;
+u8 readHoldingRegistersCb(u8 fc, u16 address, u16 length, void *callbackContext) noexcept;
+u8 writeHoldingRegistersCb(u8 fc, u16 address, u16 length, void *callbackContext) noexcept;
 
 class ModbusServer::ModbusServerImpl
 {
@@ -75,7 +75,7 @@ public:
         digitalWrite(LED_BUILTIN, builtinLedValue);
     }
 
-    uint8_t handleReadHoldingRequest(u16 address, u16 length) noexcept
+    u8 handleReadHoldingRequest(u16 address, u16 length) noexcept
     {
         const u16 actualAddress = address + 1;
 
@@ -92,7 +92,7 @@ public:
         return STATUS_OK;
     }
 
-    uint8_t handleWriteHoldingRegisterRequest(u16 address, u16 length) noexcept
+    u8 handleWriteHoldingRegisterRequest(u16 address, u16 length) noexcept
     {
         const u16 actualAddress = address + 1;
 
@@ -256,7 +256,7 @@ void ModbusServer::registerRegulatorParamsChangeHandler(TParamsObserver paramsOb
     m_pImpl->registerRegulatorParamsChangeHandler(paramsObserver);
 }
 
-uint8_t writeDigitalOutCb(uint8_t fc, uint16_t address, uint16_t length, void *callbackContext) noexcept
+u8 writeDigitalOutCb(u8 fc, u16 address, u16 length, void *callbackContext) noexcept
 {
     const bool isAddrValid = (address == modbus::LED_COIL_ADDR);
     if (!isAddrValid)
@@ -269,13 +269,13 @@ uint8_t writeDigitalOutCb(uint8_t fc, uint16_t address, uint16_t length, void *c
     return STATUS_OK;
 }
 
-uint8_t readHoldingRegistersCb(uint8_t fc, uint16_t address, uint16_t length, void *callbackContext) noexcept
+u8 readHoldingRegistersCb(u8 fc, u16 address, u16 length, void *callbackContext) noexcept
 {
     auto modbusServerImpl = reinterpret_cast<ModbusServer::ModbusServerImpl *>(callbackContext);
     return modbusServerImpl->handleReadHoldingRequest(address, length);
 }
 
-uint8_t writeHoldingRegistersCb(uint8_t fc, uint16_t address, uint16_t length, void *callbackContext) noexcept
+u8 writeHoldingRegistersCb(u8 fc, u16 address, u16 length, void *callbackContext) noexcept
 {
     auto modbusServerImpl = reinterpret_cast<ModbusServer::ModbusServerImpl *>(callbackContext);
     return modbusServerImpl->handleWriteHoldingRegisterRequest(address, length);
