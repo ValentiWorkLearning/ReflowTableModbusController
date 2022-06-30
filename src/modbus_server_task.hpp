@@ -8,23 +8,24 @@
 class ModbusServer
 {
 public:
-    ModbusServer()noexcept;
-    ~ModbusServer()noexcept;
+    ModbusServer() noexcept;
+    ~ModbusServer() noexcept;
+
 public:
-    void postSystemInit()noexcept;
-    void pollRequests()noexcept;
-    void setSurroundingTemperature(int temperature)noexcept;
-    void setHeaterTemperature(int temperature)noexcept;
+    void postSystemInit() noexcept;
+    void pollRequests() noexcept;
+    void setSurroundingTemperature(int temperature) noexcept;
+    void setHeaterTemperature(int temperature) noexcept;
 
     using TParamsGetter = etl::delegate<ThermoController::RegulatorParams()>;
     void registerRegulatorParamsGetter(TParamsGetter getter);
 
-    using TParamsObserver = etl::delegate<void(const ThermoController::RegulatorParams&)>;
+    using TParamsObserver = etl::delegate<void(const ThermoController::RegulatorParams &)>;
     void registerRegulatorParamsChangeHandler(TParamsObserver paramsObserver);
 
 public:
     class ModbusServerImpl;
-    ModbusServerImpl* m_pImpl;
+    ModbusServerImpl *m_pImpl;
 };
 
 #endif

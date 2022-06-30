@@ -2,7 +2,6 @@
 #include <ModbusSlave.h>
 
 #include "system_config.h"
-#include "logger_task.hpp"
 
 #define ETL_NO_STL
 #include <etl/flat_map.h>
@@ -10,6 +9,7 @@
 
 uint8_t writeDigitalOutCb(uint8_t fc, uint16_t address, uint16_t length, void *callbackContext) noexcept;
 uint8_t readHoldingRegistersCb(uint8_t fc, uint16_t address, uint16_t length, void *callbackContext) noexcept;
+uint8_t writeHoldingRegistersCb(uint8_t fc, uint16_t address, uint16_t length, void *callbackContext) noexcept;
 
 class ModbusServer::ModbusServerImpl
 {
@@ -52,10 +52,11 @@ public:
 
         m_slave.cbVector[CB_WRITE_COILS] = writeDigitalOutCb;
         m_slave.cbVector[CB_READ_HOLDING_REGISTERS] = readHoldingRegistersCb;
+        m_slave.cbVector[CB_WRITE_HOLDING_REGISTERS] = writeHoldingRegistersCb;
 
         m_slave.setCallbackContext(this);
 
-        m_slave.begin(SERIAL_BAUDRATE);
+        m_slave.begin(kSerialBaud);
     }
 
     void setSurroundingTemperature(int temperature) noexcept
@@ -66,12 +67,6 @@ public:
     void setHeaterTemperature(int temperature) noexcept
     {
         m_heaterTemperature = temperature;
-    }
-
-    void handleTemperatureRequest() noexcept
-    {
-        constexpr u8 kReflowTemperatureAddress = 1;
-        m_slave.writeRegisterToBuffer(kReflowTemperatureAddress, m_heaterTemperature);
     }
 
     void handleCoilsWrite() noexcept
@@ -85,15 +80,7 @@ public:
         const u16 actualAddress = address + 1;
 
         if (!checkAddress(actualAddress, length))
-        {
-            m_slave.writeRegisterToBuffer(0, address);
-            m_slave.writeRegisterToBuffer(1, length);
-            m_slave.writeRegisterToBuffer(2, m_modbusRequestsMultiplexer.size());
-            m_slave.writeRegisterToBuffer(3, actualAddress);
-            m_slave.writeRegisterToBuffer(4, m_modbusRequestsMultiplexer[actualAddress].readHandler());
-
             return STATUS_ILLEGAL_DATA_ADDRESS;
-        }
 
         u16 arrayIdx{};
         for (u16 addrIt{actualAddress}; addrIt < actualAddress + length; ++addrIt)
@@ -105,6 +92,29 @@ public:
         return STATUS_OK;
     }
 
+    uint8_t handleWriteHoldingRegisterRequest(u16 address, u16 length) noexcept
+    {
+        const u16 actualAddress = address + 1;
+
+        if (!checkAddress(actualAddress, length))
+            return STATUS_ILLEGAL_DATA_ADDRESS;
+
+        u16 arrayIdx{};
+        for (u16 addrIt{actualAddress}; addrIt < actualAddress + length; ++addrIt)
+        {
+            auto propertyAccessor = getPropertyWriteAccessor(addrIt);
+            auto newPropertyValue = m_slave.readRegisterFromBuffer(arrayIdx);
+
+            if(!propertyAccessor)
+                return STATUS_ILLEGAL_FUNCTION;
+
+            propertyAccessor(newPropertyValue);
+
+            ++arrayIdx;
+        }
+        return STATUS_OK;
+    }
+    
     void registerRegulatorParamsGetter(ModbusServer::TParamsGetter getter)
     {
         m_regulatorParamsGetter = getter;
@@ -133,6 +143,13 @@ private:
         return it->second.readHandler();
     }
 
+
+    etl::delegate<void(u16)> getPropertyWriteAccessor(u16 address)
+    {
+        auto it = m_modbusRequestsMultiplexer.find(address);
+        return it->second.writeHandler;
+    }
+
     u16 getSurroundingTemperature() const noexcept
     {
         return m_lastSurroundingTemperature;
@@ -152,20 +169,20 @@ private:
     void setRegulatorKFactor(u16 factor) noexcept
     {
         auto currentRegulatorParams = m_regulatorParamsGetter();
-        currentRegulatorParams.k = factor / 10;
+        currentRegulatorParams.k = static_cast<float>(factor) / 10.f;
         m_paramsObserver(currentRegulatorParams);
     }
 
     u16 getHysteresisValue() const noexcept
     {
         auto currentRegulatorParams = m_regulatorParamsGetter();
-        return currentRegulatorParams.hysteresis * 10;
+        return currentRegulatorParams.hysteresis;
     }
 
     void setHysteresisValue(u16 newHysteresis) noexcept
     {
         auto currentRegulatorParams = m_regulatorParamsGetter();
-        currentRegulatorParams.hysteresis= newHysteresis / 10;
+        currentRegulatorParams.hysteresis= newHysteresis;
         m_paramsObserver(currentRegulatorParams);
     }
 
@@ -182,9 +199,6 @@ private:
         m_paramsObserver(currentRegulatorParams);
     }
 
-
-
-
 private:
     struct ModbusRegisterHandler
     {
@@ -199,7 +213,7 @@ private:
     ModbusServer::TParamsGetter m_regulatorParamsGetter;
     ModbusServer::TParamsObserver m_paramsObserver;
 
-    etl::flat_map<u16, ModbusRegisterHandler, modbus::address::MODBUS_REGISTERS_COUNT> m_modbusRequestsMultiplexer;
+    etl::flat_map<u16, ModbusRegisterHandler, modbus::address::kModbusRegistersCount> m_modbusRequestsMultiplexer;
     Modbus m_slave;
 };
 
@@ -259,4 +273,11 @@ uint8_t readHoldingRegistersCb(uint8_t fc, uint16_t address, uint16_t length, vo
 {
     auto modbusServerImpl = reinterpret_cast<ModbusServer::ModbusServerImpl *>(callbackContext);
     return modbusServerImpl->handleReadHoldingRequest(address, length);
+}
+
+uint8_t writeHoldingRegistersCb(uint8_t fc, uint16_t address, uint16_t length, void *callbackContext) noexcept
+{
+    auto modbusServerImpl = reinterpret_cast<ModbusServer::ModbusServerImpl *>(callbackContext);
+    return modbusServerImpl->handleWriteHoldingRegisterRequest(address, length);
+
 }

@@ -4,7 +4,6 @@
 class ThermoController
 {
 public:
-
     struct RegulatorParams
     {
         float setpoint;
@@ -13,20 +12,20 @@ public:
     };
 
 public:
-    ThermoController()noexcept;
+    ThermoController() noexcept;
     ~ThermoController();
 
 public:
-    void processTemperatureControl()noexcept;
-    int getSurroundingTemperature()noexcept;
-    int getThermocoupleTemperature()noexcept;
+    void processTemperatureControl() noexcept;
+    int getSurroundingTemperature() noexcept;
+    int getThermocoupleTemperature() noexcept;
 
-    RegulatorParams getActualRegulatorParams()const noexcept;
-    void setActualRegulatorParams(const RegulatorParams& params)noexcept;
+    RegulatorParams getActualRegulatorParams() const noexcept;
+    void setActualRegulatorParams(const RegulatorParams &params) noexcept;
 
 private:
     class ThermoControllerImpl;
-    ThermoControllerImpl* m_pImpl;
+    ThermoControllerImpl *m_pImpl;
 };
 
 #endif
