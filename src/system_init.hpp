@@ -1,6 +1,10 @@
 #ifndef SYSTEM_INIT_H
 #define SYSTEM_INIT_H
 
-void initPeripheral();
+namespace systemns
+{
+    void initPeripheral();
 
+    void heartbeat();
+}
 #endif
