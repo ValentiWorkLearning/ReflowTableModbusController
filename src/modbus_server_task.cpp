@@ -30,7 +30,7 @@ public:
                 .readHandler = etl::delegate<u16()>::create<ModbusServer::ModbusServerImpl, &ModbusServerImpl::getRegulatorKFactor>(*this),
                 .writeHandler = etl::delegate<void(u16)>::create<ModbusServer::ModbusServerImpl, &ModbusServerImpl::setRegulatorKFactor>(*this)};
 
-        m_modbusRequestsMultiplexer[modbus::address::kFeedbackAddr] =
+        m_modbusRequestsMultiplexer[modbus::address::kHysteresisAddr] =
             ModbusRegisterHandler{
                 .readHandler = etl::delegate<u16()>::create<ModbusServer::ModbusServerImpl, &ModbusServerImpl::getHysteresisValue>(*this),
                 .writeHandler = etl::delegate<void(u16)>::create<ModbusServer::ModbusServerImpl, &ModbusServerImpl::setHysteresisValue>(*this)};
@@ -77,7 +77,7 @@ public:
 
     u8 handleReadHoldingRequest(u16 address, u16 length) noexcept
     {
-        const u16 actualAddress = address + 1;
+        const u16 actualAddress = address;
 
         if (!checkAddress(actualAddress, length))
             return STATUS_ILLEGAL_DATA_ADDRESS;
@@ -94,7 +94,7 @@ public:
 
     u8 handleWriteHoldingRegisterRequest(u16 address, u16 length) noexcept
     {
-        const u16 actualAddress = address + 1;
+        const u16 actualAddress = address;
 
         if (!checkAddress(actualAddress, length))
             return STATUS_ILLEGAL_DATA_ADDRESS;

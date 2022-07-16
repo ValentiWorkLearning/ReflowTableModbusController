@@ -24,7 +24,7 @@ namespace modbus
         constexpr u16 kSurroundingTempAddr = 0x200F;
         constexpr u16 kThermocoupleAddr = 0x2010;
         constexpr u16 kFactorAddr = 0x2011;
-        constexpr u16 kFeedbackAddr = 0x2012;
+        constexpr u16 kHysteresisAddr = 0x2012;
         constexpr u16 kTargetTemperatureAddr = 0x2013;
 
         constexpr u16 kModbusRegistersCount = 5;

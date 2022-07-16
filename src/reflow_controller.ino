@@ -7,7 +7,7 @@ ThermoController thermoController;
 
 void setup()
 {
-  initPeripheral();
+  systemns::initPeripheral();
   modbusServer.postSystemInit();
   modbusServer.registerRegulatorParamsChangeHandler(
       etl::delegate<void(const ThermoController::RegulatorParams &)>::create<ThermoController, &ThermoController::setActualRegulatorParams>(thermoController));
@@ -21,4 +21,5 @@ void loop()
   modbusServer.setHeaterTemperature(thermoController.getThermocoupleTemperature());
   modbusServer.setSurroundingTemperature(thermoController.getSurroundingTemperature());
   thermoController.processTemperatureControl();
+  systemns::heartbeat();
 }
