@@ -1,5 +1,4 @@
 #include "thermo_controller_task.hpp"
-#include <Arduino_FreeRTOS.h>
 #include <Arduino.h>
 
 #include "max6675.h"
