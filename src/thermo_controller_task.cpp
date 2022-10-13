@@ -7,6 +7,7 @@
 #include <GyverRelay.h>
 #include <OneWire.h>
 #include <DallasTemperature.h>
+#include "settings_storage.hpp"
 
 constexpr u8 MAX6675_READ_DELAY_MS = 250;
 
@@ -16,9 +17,17 @@ public:
     ThermoControllerImpl() noexcept
         : m_thermocouple{kThermoClockPin, kThermoCsPin, kThermoDoPin}, m_regulator{REVERSE}, m_oneWire{kOneWireBusPin}, m_sensors{&m_oneWire}
     {
-        m_regulator.setpoint = 30;
-        m_regulator.hysteresis = 5;
-        m_regulator.k = 0.5;
+        
+        if(settings::SettingsStorage::Instance().canRestore()){
+            RegulatorParams regulatorSettings{settings::SettingsStorage::Instance().restore()};
+            m_regulator.hysteresis = regulatorSettings.hysteresis;
+            m_regulator.k = regulatorSettings.k;
+        }
+        else{
+            m_regulator.setpoint = 30;
+            m_regulator.hysteresis = 5;
+            m_regulator.k = 0.5;
+        }
     }
 
     int getSurroundingTemperature() noexcept
@@ -52,6 +61,8 @@ public:
         m_regulator.setpoint = params.setpoint;
         m_regulator.hysteresis = params.hysteresis;
         m_regulator.k = params.k;
+
+        settings::SettingsStorage::Instance().store(params);
     }
 
 private:
