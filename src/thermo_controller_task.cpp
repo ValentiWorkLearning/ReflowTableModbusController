@@ -9,7 +9,46 @@
 #include <DallasTemperature.h>
 #include "settings_storage.hpp"
 
+#define ETL_NO_STL
+#include <etl/flat_map.h>
+#include <etl/delegate.h>
+
 constexpr u8 MAX6675_READ_DELAY_MS = 250;
+
+template<typename LazyType>
+struct LazySensorAccessor
+{
+public:
+
+
+    LazySensorAccessor() = default;
+
+    LazySensorAccessor(u32 accessPeriod,etl::delegate<int()> accessor)
+        :   m_accessPeriod{accessPeriod},
+            m_accessor{accessor}
+    {
+    }
+
+    LazyType getValue() noexcept
+    {
+        auto current = millis();
+        if(current - m_lastAccessTime < m_accessPeriod)
+            return m_cachedValue;
+
+        m_lastAccessTime = current;
+        m_cachedValue = m_accessor();
+
+        return m_cachedValue;
+    }
+    
+private:
+    uint32_t m_accessPeriod;
+    etl::delegate<int()> m_accessor;
+    uint32_t m_lastAccessTime = 0x00;
+
+    LazyType m_cachedValue;
+};
+
 
 class ThermoController::ThermoControllerImpl
 {
@@ -28,9 +67,26 @@ public:
             m_regulator.hysteresis = 5;
             m_regulator.k = 0.5;
         }
+
+        constexpr u32 kSurroundingAccessMs{10000};
+        constexpr u32 kTableAccessMs{250};
+
+        m_surroundingLazyAccessor = LazySensorAccessor<int>{kSurroundingAccessMs,
+            etl::delegate<int()>::create<ThermoController::ThermoControllerImpl, &ThermoController::ThermoControllerImpl::getSurroundingTemperatureImpl>(*this)
+        };
+
+        m_tableLazyAccessor = LazySensorAccessor<int>{kTableAccessMs,
+            etl::delegate<int()>::create<ThermoController::ThermoControllerImpl, &ThermoController::ThermoControllerImpl::getThermocoupleTemperatureImpl>(*this)
+        };
     }
 
+
     int getSurroundingTemperature() noexcept
+    {
+        return m_surroundingLazyAccessor.getValue();
+    }
+
+    int getSurroundingTemperatureImpl() noexcept
     {
         constexpr u8 kSensorIndex = 0;
         m_sensors.requestTemperatures();
@@ -38,6 +94,11 @@ public:
     }
 
     int getThermocoupleTemperature() noexcept
+    {
+        return m_tableLazyAccessor.getValue();
+    }
+
+    int getThermocoupleTemperatureImpl() noexcept
     {
         return m_thermocouple.readCelsius();
     }
@@ -66,6 +127,9 @@ public:
     }
 
 private:
+    LazySensorAccessor<int> m_surroundingLazyAccessor;
+    LazySensorAccessor<int> m_tableLazyAccessor;
+
     MAX6675 m_thermocouple;
     GyverRelay m_regulator;
     OneWire m_oneWire;
